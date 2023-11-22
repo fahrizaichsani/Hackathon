@@ -33,9 +33,34 @@ function moveItem() {
     }
 }
 
+function addScore() {
+    const items = document.querySelectorAll(".item");
+    
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (checkCatcherCollision(catcher, item)) {
+            gameContainer.removeChild(item);
+            createItem();
+            score++;
+        }
+    }
+}
+
+function checkCatcherCollision(catcher, fallingObject) {
+    const catcherRect = catcher.getBoundingClientRect();
+    const objectRect = fallingObject.getBoundingClientRect();
+
+    return (
+      catcherRect.left < objectRect.right &&
+      catcherRect.right > objectRect.left &&
+      catcherRect.top < objectRect.bottom &&
+      catcherRect.bottom > objectRect.top
+    );
+}
+
 function start() {
     moveCatcher();
-    setInterval(moveItem, 10);
+    setInterval(() => {moveItem(); addScore();}, 10);
 }
 
 start();
