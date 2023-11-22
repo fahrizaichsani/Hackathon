@@ -6,3 +6,11 @@
     bottom: 15px;
     left: 50%;
 }
+
+.item {
+    position: absolute;
+    background: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
