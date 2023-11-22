@@ -1,5 +1,6 @@
 const gameContainer = document.body;
 const catcher = document.getElementById("catcher");
+let score = 0;
 
 function moveCatcher() {
     document.addEventListener("mousemove", e => {
@@ -10,12 +11,31 @@ function moveCatcher() {
 
 function createItem() {
     const item = document.createElement("div");
-    const pos = Math.random() * gameContainer.clientWidth;
+    const posLeft = Math.random() * gameContainer.clientWidth;
     item.classList.add("item");
     item.style.top = "50px";
-    item.style.left = `${pos}px`;
+    item.style.left = `${posLeft}px`;
     gameContainer.appendChild(item);
 }
 
-moveCatcher();
-createItem();
+function moveItem() {
+    const item = document.querySelector(".item");
+    if (!item) {
+        createItem();
+    }
+
+    let posTop = item.offsetTop + 1;
+    item.style.top = `${posTop}px`;
+
+    if (posTop > gameContainer.clientHeight) {
+        gameContainer.removeChild(item);
+        createItem();
+    }
+}
+
+function start() {
+    moveCatcher();
+    setInterval(moveItem, 10);
+}
+
+start();
