@@ -1,8 +1,35 @@
-#catcher {
+* {
+    padding: 0;
+    margin: 0;
+}
+#main {
+    background-image: url(assets/background.jpg);
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+#gifkucing {
     position: absolute;
-    background: blue;
-    width: 50px;
+    width: 80px;
     height: 60px;
     bottom: 15px;
     left: 50%;
+    margin-left: 40px;
+    background-image: url(assets/Cleo.gif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+#catcher {
+    position: absolute;
+    background: transparent;
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    left: 50%;
+    z-index: 3;
 }
