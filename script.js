@@ -1,4 +1,5 @@
 const gameContainer = document.body;
+const main = document.getElementById("main");
 const catcher = document.getElementById("catcher");
 const gifkucing = document.getElementById('gifkucing')
 let score = 0;
@@ -20,11 +21,12 @@ function createItem() {
     item.classList.add("item");
     item.style.top = "50px";
     item.style.left = `${posLeft}px`;
-    gameContainer.appendChild(item);
+    main.appendChild(item);
 }
 
 function moveItem() {
     const item = document.querySelector(".item");
+
     if (!item) {
         createItem();
     }
@@ -33,7 +35,7 @@ function moveItem() {
     item.style.top = `${posTop}px`;
 
     if (posTop > gameContainer.clientHeight) {
-        gameContainer.removeChild(item);
+        main.removeChild(item);
         createItem();
         lives--;
         if (lives === 0) {
@@ -48,7 +50,7 @@ function addScore() {
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
         if (checkCatcherCollision(catcher, item)) {
-            gameContainer.removeChild(item);
+            main.removeChild(item);
             createItem();
             itemSpeed += 0.1;
             score++;
