@@ -58,6 +58,8 @@ function addScore() {
             score++;
         }
     }
+    const number = document.getElementById("score");
+    number.innerHTML = `score: ${score}`
 }
 
 function checkCatcherCollision(catcher, fallingObject) {
@@ -82,3 +84,8 @@ function gameOver() {
 }
 
 start();
+
+
+
+
+
