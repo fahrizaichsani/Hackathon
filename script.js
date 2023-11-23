@@ -7,13 +7,11 @@ let itemSpeed = 1;
 let lives = 3;
 let game;
 
-function moveCatcher() {
-    document.addEventListener("mousemove", e => {
-        let mousePosition = e.clientX;
-        catcher.style.left = `${mousePosition - catcher.clientWidth/2}px`
-
-        gifkucing.style.left = `${mousePosition - gifkucing.clientWidth/2}px`
-    })
+function moveCatcher(event) {
+    let mousePosition = event.clientX;
+    catcher.style.left = `${mousePosition - catcher.clientWidth/2}px`
+    gifkucing.style.left = `${mousePosition - gifkucing.clientWidth/2}px`
+    
 }
 
 function createItem() {
@@ -65,6 +63,8 @@ function moveItem() {
 
 function addScore() {
     const items = document.querySelectorAll(".item");
+    const number = document.getElementById("scoreText");
+    number.innerHTML = `score: ${score}`
     
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
@@ -75,8 +75,6 @@ function addScore() {
             score++;
         }
     }
-    const number = document.getElementById("scoreText");
-    number.innerHTML = `score: ${score}`
 }
 
 function checkCatcherCollision(catcher, fallingObject) {
@@ -92,13 +90,14 @@ function checkCatcherCollision(catcher, fallingObject) {
 }
 
 function start() {
-    moveCatcher();
+    document.addEventListener("mousemove", moveCatcher);
     game = setInterval(() => {moveItem(); addScore();}, 10);
 }
 
 function gameOver() {
     const item = document.querySelector(".item");
     
+    document.removeEventListener("mousemove", moveCatcher);
     setTimeout(() => {
         alert(`Game Over! Your score is ${score}`);
     }, 100);
