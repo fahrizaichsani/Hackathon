@@ -39,13 +39,12 @@ body {
     z-index: 3;
 }
 
-
-
 .item {
     position: absolute;
     background: red;
     width: 10px;
     height: 10px;
     border-radius: 50%;
+    z-index: 3;
 }
 
