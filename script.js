@@ -4,7 +4,7 @@ const catcher = document.getElementById("catcher");
 const gifkucing = document.getElementById('gifkucing');
 const parentNyawa = document.getElementById("parentNyawa");
 const idScore = document.getElementById("score");
-const popUp = document.getElementById("popUp");
+const startGame = document.getElementById("startgame");
 let score = 0;
 let itemSpeed = 1;
 let lives = 3;
@@ -19,7 +19,7 @@ function moveCatcher(event) {
 
 function createItem() {
     const item = document.createElement("div");
-    const posLeft = Math.random() * gameContainer.clientWidth;
+    const posLeft = Math.random() * (gameContainer.clientWidth - 50);
     item.classList.add("item");
     item.style.top = "50px";
     item.style.left = `${posLeft}px`;
@@ -35,6 +35,7 @@ function moveItem() {
 
     if (!item) {
         createItem();
+        return;
     }
 
     let posTop = item.offsetTop + itemSpeed;
@@ -93,10 +94,10 @@ function checkCatcherCollision(catcher, fallingObject) {
 }
 
 function start() {
-    idScore.style.display = "block";
+    idScore.style.display = "flex";
     gifkucing.style.display = "block";
-    parentNyawa.style.display = "block";
-    popUp.style.display = "none";
+    parentNyawa.style.display = "inline-flex";
+    startGame.style.display = "none";
     document.addEventListener("mousemove", moveCatcher);
     game = setInterval(() => {moveItem(); addScore();}, 10);
 }
