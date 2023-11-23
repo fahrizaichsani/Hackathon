@@ -112,3 +112,14 @@ body {
     object-fit: cover;
 }
 
+#popUp {
+    position: absolute;
+    width: 90vw;
+    height: 80vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    /* border-radius: 15%; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

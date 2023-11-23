@@ -1,7 +1,10 @@
 const gameContainer = document.body;
 const main = document.getElementById("main");
 const catcher = document.getElementById("catcher");
-const gifkucing = document.getElementById('gifkucing')
+const gifkucing = document.getElementById('gifkucing');
+const parentNyawa = document.getElementById("parentNyawa");
+const idScore = document.getElementById("score");
+const popUp = document.getElementById("popUp");
 let score = 0;
 let itemSpeed = 1;
 let lives = 3;
@@ -90,6 +93,10 @@ function checkCatcherCollision(catcher, fallingObject) {
 }
 
 function start() {
+    idScore.style.display = "block";
+    gifkucing.style.display = "block";
+    parentNyawa.style.display = "block";
+    popUp.style.display = "none";
     document.addEventListener("mousemove", moveCatcher);
     game = setInterval(() => {moveItem(); addScore();}, 10);
 }
