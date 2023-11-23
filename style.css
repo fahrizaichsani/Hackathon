@@ -1,3 +1,29 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+#main {
+    background-image: url(assets/background.jpg);
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+#gifkucing {
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    bottom: 15px;
+    left: 50%;
+    margin-left: 40px;
+    background-image: url(assets/Cleo.gif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateX(-50%);
+    z-index: 3;
+}
 body {
     position: relative;
     height: 100vh;
@@ -5,12 +31,15 @@ body {
 
 #catcher {
     position: absolute;
-    background: blue;
+    background: transparent;
     width: 50px;
-    height: 60px;
+    height: 50px;
     bottom: 15px;
     left: 50%;
+    z-index: 3;
 }
+
+
 
 .item {
     position: absolute;
@@ -19,3 +48,4 @@ body {
     height: 10px;
     border-radius: 50%;
 }
+
