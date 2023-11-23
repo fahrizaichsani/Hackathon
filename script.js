@@ -27,6 +27,10 @@ function createItem() {
 
 function moveItem() {
     const item = document.querySelector(".item");
+    const parentNyawa = document.getElementById("parentNyawa");
+    const nyawa1 = document.getElementById("nyawa1");
+    const nyawa2 = document.getElementById("nyawa2");
+    const nyawa3 = document.getElementById("nyawa3");
 
     if (!item) {
         createItem();
@@ -39,6 +43,18 @@ function moveItem() {
         main.removeChild(item);
         createItem();
         lives--;
+        switch (lives) {
+            case 2:
+                parentNyawa.removeChild(nyawa1);
+                break;
+            case 1:
+                parentNyawa.removeChild(nyawa2);
+                break;
+            case 0:
+                parentNyawa.removeChild(nyawa3);
+                break;  
+        }
+
         if (lives === 0) {
             gameOver();
         }
@@ -59,7 +75,7 @@ function addScore() {
             score++;
         }
     }
-    const number = document.getElementById("score");
+    const number = document.getElementById("scoreText");
     number.innerHTML = `score: ${score}`
 }
 
@@ -83,7 +99,9 @@ function start() {
 function gameOver() {
     const item = document.querySelector(".item");
     
-    alert(`Game Over!`);
+    setTimeout(() => {
+        alert(`Game Over! Your score is ${score}`);
+    }, 100);
     clearInterval(game);
     main.removeChild(item);
 }
