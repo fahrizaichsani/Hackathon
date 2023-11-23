@@ -2,6 +2,8 @@ const gameContainer = document.body;
 const catcher = document.getElementById("catcher");
 const gifkucing = document.getElementById('gifkucing')
 let score = 0;
+let itemSpeed = 1;
+let lives = 3;
 
 function moveCatcher() {
     document.addEventListener("mousemove", e => {
@@ -27,12 +29,16 @@ function moveItem() {
         createItem();
     }
 
-    let posTop = item.offsetTop + 1;
+    let posTop = item.offsetTop + itemSpeed;
     item.style.top = `${posTop}px`;
 
     if (posTop > gameContainer.clientHeight) {
         gameContainer.removeChild(item);
         createItem();
+        lives--;
+        if (lives === 0) {
+            gameOver();
+        }
     }
 }
 
@@ -44,6 +50,7 @@ function addScore() {
         if (checkCatcherCollision(catcher, item)) {
             gameContainer.removeChild(item);
             createItem();
+            itemSpeed += 0.1;
             score++;
         }
     }
@@ -64,6 +71,10 @@ function checkCatcherCollision(catcher, fallingObject) {
 function start() {
     moveCatcher();
     setInterval(() => {moveItem(); addScore();}, 10);
+}
+
+function gameOver() {
+    alert(`Game Over!`);
 }
 
 start();
