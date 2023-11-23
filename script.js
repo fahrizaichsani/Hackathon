@@ -40,6 +40,8 @@ function moveItem() {
             gameOver();
         }
     }
+
+
 }
 
 function addScore() {
