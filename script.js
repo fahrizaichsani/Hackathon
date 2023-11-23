@@ -5,6 +5,7 @@ const gifkucing = document.getElementById('gifkucing')
 let score = 0;
 let itemSpeed = 1;
 let lives = 3;
+let game;
 
 function moveCatcher() {
     document.addEventListener("mousemove", e => {
@@ -76,16 +77,15 @@ function checkCatcherCollision(catcher, fallingObject) {
 
 function start() {
     moveCatcher();
-    setInterval(() => {moveItem(); addScore();}, 10);
+    game = setInterval(() => {moveItem(); addScore();}, 10);
 }
 
 function gameOver() {
+    const item = document.querySelector(".item");
+    
     alert(`Game Over!`);
+    clearInterval(game);
+    main.removeChild(item);
 }
 
 start();
-
-
-
-
-
