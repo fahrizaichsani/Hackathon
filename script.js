@@ -104,5 +104,3 @@ function gameOver() {
     clearInterval(game);
     main.removeChild(item);
 }
-
-start();
